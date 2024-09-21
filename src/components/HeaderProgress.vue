@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import BaseIcon from './BaseIcon.vue'
 import { HUNDRED_PERCENT, PAGE_PROGRESS } from '@/constants'
 import { navigate } from '@/router'

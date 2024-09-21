@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import ProgressItem from '@/components/ProgressItem.vue'
 import { trackedActivities } from '@/activities'
 import EmptyState from '@/components/EmptyState.vue'

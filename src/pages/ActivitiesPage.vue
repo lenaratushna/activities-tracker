@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import ActivityItem from '@/components/ActivityItem.vue'
 import ActivityForm from '@/components/ActivityForm.vue'
 import EmptyState from '@/components/EmptyState.vue'

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { nextTick, ref } from 'vue'
 import BaseButton from '@/components/BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
@@ -8,7 +8,7 @@ import { createActivity } from '@/activities'
 
 const activityName = ref('')
 
-async function submit() {
+async function submit(): Promise<void> {
   createActivity({
     id: id(),
     name: activityName.value,

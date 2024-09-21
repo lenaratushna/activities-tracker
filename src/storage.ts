@@ -8,15 +8,16 @@ import {
   stopTimelineItemTimer,
   initializeTimelineItems
 } from './timeline-items'
+import type { State } from './types'
 
-export function loadState() {
+export function loadState(): void {
   const state = loadFromLocalStorage()
 
   initializeActivities(state)
   initializeTimelineItems(state)
 }
 
-export function syncState(shouldLoad = true) {
+export function syncState(shouldLoad = true): void {
   shouldLoad ? loadState() : saveState()
 
   if (activeTimelineItem.value) {
@@ -24,11 +25,11 @@ export function syncState(shouldLoad = true) {
   }
 }
 
-function loadFromLocalStorage() {
+function loadFromLocalStorage(): State {
   return JSON.parse(localStorage.getItem(APP_NAME) ?? '{}')
 }
 
-function saveState() {
+function saveState(): void {
   localStorage.setItem(
     APP_NAME,
     JSON.stringify({

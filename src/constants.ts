@@ -1,4 +1,21 @@
 import { generatePeriodSelectOptions } from './functions'
+import type { NavItem, ButtonType } from './types'
+import {
+  ExclamationCircleIcon,
+  PlusIcon,
+  TrashIcon,
+  XMarkIcon,
+  ArrowPathIcon,
+  PauseIcon,
+  PlayIcon
+} from '@heroicons/vue/24/outline'
+
+import {
+  ClockIcon,
+  ClipboardDocumentListIcon,
+  CheckCircleIcon,
+  ChartBarIcon
+} from '@heroicons/vue/24/solid'
 
 export const APP_NAME = 'tracker'
 
@@ -12,7 +29,7 @@ export const BUTTON_TYPE_DANGER = 'danger'
 export const BUTTON_TYPE_SUCCESS = 'success'
 export const BUTTON_TYPE_WARNING = 'warning'
 
-export const BUTTON_TYPES = [
+export const BUTTON_TYPES: ButtonType[] = [
   BUTTON_TYPE_PRIMARY,
   BUTTON_TYPE_NEUTRAL,
   BUTTON_TYPE_DANGER,
@@ -20,7 +37,7 @@ export const BUTTON_TYPES = [
   BUTTON_TYPE_WARNING
 ]
 
-export const NAV_ITEMS = [
+export const NAV_ITEMS: NavItem[] = [
   {
     page: PAGE_TIMELINE,
     icon: 'ClockIcon'
@@ -48,3 +65,17 @@ export const MEDIUM_PERCENT = 66
 export const HUNDRED_PERCENT = 100
 
 export const PERIOD_SELECT_OPTIONS = generatePeriodSelectOptions()
+
+export const ICONS = {
+  ExclamationCircleIcon,
+  PlusIcon,
+  TrashIcon,
+  XMarkIcon,
+  ArrowPathIcon,
+  PauseIcon,
+  PlayIcon,
+  ClockIcon,
+  ClipboardDocumentListIcon,
+  CheckCircleIcon,
+  ChartBarIcon
+}

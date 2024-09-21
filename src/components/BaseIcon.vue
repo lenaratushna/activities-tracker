@@ -1,43 +1,10 @@
-<script setup>
-import {
-  ExclamationCircleIcon,
-  PlusIcon,
-  TrashIcon,
-  XMarkIcon,
-  ArrowPathIcon,
-  PauseIcon,
-  PlayIcon
-} from '@heroicons/vue/24/outline'
+<script setup lang="ts">
+import { ICONS } from '@/constants'
+import type { IconName } from '@/types'
 
-import {
-  ClockIcon,
-  ClipboardDocumentListIcon,
-  CheckCircleIcon,
-  ChartBarIcon
-} from '@heroicons/vue/24/solid'
-
-defineProps({
-  name: {
-    required: true,
-    type: String
-  }
-})
-
-const icons = {
-  ExclamationCircleIcon,
-  PlusIcon,
-  TrashIcon,
-  XMarkIcon,
-  ArrowPathIcon,
-  PauseIcon,
-  PlayIcon,
-  ClockIcon,
-  ClipboardDocumentListIcon,
-  CheckCircleIcon,
-  ChartBarIcon
-}
+defineProps<{ name: IconName }>()
 </script>
 
 <template>
-  <component :is="icons[name]" />
+  <component :is="ICONS[name]" />
 </template>

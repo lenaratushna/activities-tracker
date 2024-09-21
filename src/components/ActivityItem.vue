@@ -1,22 +1,16 @@
-<script setup>
+<script setup lang="ts">
 import BaseButton from './BaseButton.vue'
 import BaseSelect from './BaseSelect.vue'
 import BaseIcon from './BaseIcon.vue'
 import RemainingActivitySeconds from './RemainingActivitySeconds.vue'
 import { BUTTON_TYPE_DANGER, PERIOD_SELECT_OPTIONS } from '@/constants'
-import { isActivityValid } from '@/validators'
 import { timelineItems, resetTimelineItemActivities } from '@/timeline-items'
 import { updateActivity, deleteActivity } from '@/activities'
+import type { Activity } from '../types'
 
-defineProps({
-  activity: {
-    required: true,
-    type: Object,
-    validator: isActivityValid
-  }
-})
+defineProps<{ activity: Activity }>()
 
-function deleteAndResetActivity(activity) {
+function deleteAndResetActivity(activity: Activity): void {
   resetTimelineItemActivities(timelineItems.value, activity)
   deleteActivity(activity)
 }

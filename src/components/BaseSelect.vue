@@ -1,32 +1,22 @@
-<script setup>
-import { computed } from 'vue'
-import { validateSelectOptions, isUndefineOrNull, isSelectValueValid } from '../validators'
+<script setup lang="ts" generic="T extends number | string">
 import { BUTTON_TYPE_NEUTRAL } from '../constants'
 import { normalizeSelect } from '../functions'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
+import type { SelectOption } from '@/types'
 
-const props = defineProps({
-  selected: [String, Number],
-  options: {
-    required: true,
-    type: Array,
-    validator: validateSelectOptions
-  },
-  placeholder: {
-    required: true,
-    type: String
-  }
-})
+defineProps<{
+  selected: T | null
+  options: SelectOption<T>[]
+  placeholder: string
+}>()
 
-const emit = defineEmits({
-  select: isSelectValueValid
-})
+const emit = defineEmits<{
+  select: [value: T | null]
+}>()
 
-const isNotSelected = computed(() => isUndefineOrNull(props.selected))
-
-function select(value) {
-  emit('select', normalizeSelect(value))
+function select(value: string | null): void {
+  emit('select', normalizeSelect(value) as T | null)
 }
 </script>
 
@@ -37,9 +27,9 @@ function select(value) {
     </BaseButton>
     <select
       class="w-full truncate rounded bg-gray-100 py-1 px-2"
-      @change="select($event.target.value)"
+      @change="select(($event.target as HTMLSelectElement).value)"
     >
-      <option :selected="isNotSelected" disabled value="">
+      <option :selected="selected === null" disabled value="">
         {{ placeholder }}
       </option>
       <option
